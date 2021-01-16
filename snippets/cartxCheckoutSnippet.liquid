@@ -1,0 +1,41 @@
+ <style>
+                                        .white-overlay {display: none;background-color: rgba(255, 255, 255, 1);z-index: 9999;top: 0;left: 0;height: 100vh;width: 100vw;position: fixed;margin: 0;}.spinner-wrapper {position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);margin: 0 auto;min-width: 220px;}.spinner {border: 6px solid #e2e2e2;border-top: 6px solid #297FBC;border-radius: 50%;width: 100px;height: 100px;animation: spin 2s linear infinite;margin: auto;}.spinner-icon {position: relative;}.spinner-icon .spinner-icon-svg {position: absolute;top: 50%;left: 50%;margin-left: -19px;margin-top: -70px;width: 40px;height: 40px;}.spinner-text {text-align: center;color: #526473;font-size: 16px;padding-top: 2rem;} @keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}} @keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}
+                                    </style>
+
+                        <div class="ch-preloader white-overlay cartx-loader" id="ch-preloader">
+                            <div class="spinner-wrapper">
+                                <div class=''>
+                                    <div class="spinner"></div>
+                                    <div class="spinner-icon">
+                                        <svg fill="#e2e2e2" class="spinner-icon-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18 10v-4c0-3.313-2.687-6-6-6s-6 2.687-6 6v4h-3v14h18v-14h-3zm-5 7.723v2.277h-2v-2.277c-.595-.347-1-.984-1-1.723 0-1.104.896-2 2-2s2 .896 2 2c0 .738-.404 1.376-1 1.723zm-5-7.723v-4c0-2.206 1.794-4 4-4 2.205 0 4 1.794 4 4v4h-8z"></path></svg>
+                                    </div>
+                                </div>
+                                <div class=''><div class="spinner-text">Carregando Ambiente Seguro</div></div>
+                            </div>
+                        </div>
+
+                        <script>
+                            if(!window.jQuery || typeof jQuery == 'undefined' || jQuery == null)
+                            {
+                                document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></' + 'script>');
+                            }
+                        </script>
+                        <script>
+
+                        function loadJS(file) {
+                            // DOM: Create the script element
+                            var jsElm = document.createElement("script");
+                            // set the type attribute
+                            jsElm.type = "application/javascript";
+                            // make the script element load file
+                            jsElm.src = file;
+                            // finally insert the element to the body element in order to load the script
+                            document.body.appendChild(jsElm);
+                        }
+                        loadJS('https://accounts.cartx.io/assets/js/shopify_redirect.js');
+
+                        var currentPage = '{{ template.name }}',
+                            cartEndpoint = 'https://accounts.cartx.io/shopify/cart',
+                            shopName = '{{shop.permanent_domain}}',
+                            shop = '{{shop.secure_url}}';
+            </script>
